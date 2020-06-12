@@ -1,0 +1,113 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class DatePicker {
+
+	public static String CurrentDateAndTime() {
+		Date dt = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String currentTime = sdf.format(dt);
+		return currentTime;
+	}
+
+	public static String getCurrentDate() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = new Date();
+		String date = dateFormat.format(date1);
+		return date;
+	}
+
+	public static String getCurrentFormattedDate() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = new Date();
+		String date = dateFormat.format(date1);
+		return date;
+	}
+
+	public static Date returnFormattedDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String stringDate = formatter.format(date);
+		Date minDate = null;
+		try {
+			minDate = formatter.parse(stringDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return minDate;
+	}
+
+	public static String getCurrentTime() {
+		DateFormat dateFormat1 = new SimpleDateFormat("HH:mm:ss");
+		Date time1 = new Date();
+		String time = dateFormat1.format(time1);
+		return time;
+	}
+
+	public static String ConvertDateToString(Date today) {
+
+		DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+		String reportDate = df1.format(today);
+		return reportDate;
+
+	}
+
+	public static Date sqlDateFormat(Date date) {
+		return new java.sql.Date(date.getTime());
+	}
+
+	public static String generateYear() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
+		return dateFormat.format(date);
+
+	}
+
+	public static Date convertStringToDate(String Sdate) {
+		Date date = null;
+		try {
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(Sdate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+
+	public static Date convertStringToDateTime(String Sdate) {
+		Date date = null;
+		try {
+			DateFormat formatter;
+			formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			date = formatter.parse(Sdate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+
+	public static String convertDateToString(Date date) {
+		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+		String reportDate = df.format(date);
+		return reportDate;
+	}
+
+	public static String convertDateTimeToString(Date date) {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String reportDate = df.format(date);
+		return reportDate;
+	}
+
+	public static String dateIncrementDecrement(Date date, int difference) {
+		Calendar myCal = Calendar.getInstance();
+		Date now = date;
+		myCal.setTime(now);
+		myCal.add(Calendar.MONTH, difference);
+		now = myCal.getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(myCal.getTime());
+	}
+}
